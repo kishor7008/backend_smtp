@@ -1,5 +1,21 @@
 const puppeteer = require("puppeteer");
+(async () => {
+  const browser = await puppeteer.launch({
+    headless: true, // Enable headless mode
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--single-process',
+    ],
+  });
 
+  const page = await browser.newPage();
+  await page.goto('http://localhost:3000/');
+  console.log(await page.title());
+  await browser.close();
+})();
 async function htmlToPdf(htmlContent) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
