@@ -18,7 +18,7 @@ app.post("/send-email", upload.fields([
 ]), emailController.sendEmail);
 app.use('/ec2', ec2Route);
 // Start the server
-const PORT = 8080;
+const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
